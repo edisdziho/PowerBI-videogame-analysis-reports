@@ -1,0 +1,102 @@
+Power BI DAX Measures for Video Game Sales Analysis
+This README outlines the key DAX (Data Analysis Expressions) measures used in the Power BI dashboard for analyzing video game sales. Each measure's purpose and its application within the various dashboard visuals are described below.
+
+Measures Overview
+average_global_sales
+What it does: Calculates the average global sales per unique game title. It first sums the sales for each distinct game name and then calculates the average of these sums across all games.
+
+DAX Formula:
+
+average_global_sales = AVERAGEX(
+    VALUES(vgsales[Name]),
+    CALCULATE(SUM(vgsales[Sales]))
+)
+
+Where it's used: This measure can serve as a general Key Performance Indicator (KPI) to understand the typical sales performance of a game. While not explicitly tied to a specific chart description provided, it's valuable for overall sales insights or could be used in a card visual showing the overall average.
+
+BrojIgrica
+What it does: Counts the distinct number of video game titles present in the dataset.
+
+DAX Formula:
+
+BrojIgrica = DISTINCTCOUNT(vgsales[Name])
+
+Where it's used:
+
+Matrix Visual: This measure is fundamental for the "Matrix visual (number of games released by platform and genre)", where it displays the count of distinct games for each platform and genre combination.
+
+EU_Sales
+What it Does: Calculates the total sales specifically for the European (EU) region.
+
+DAX Formula:
+
+EU_Sales =
+CALCULATE(
+    SUM(vgsales[Sales]),
+    vgsales[Region] = "EU"
+)
+
+Where it's used:
+
+Scatter Plot: Used on the Y-axis of the "Scatter – correlation between NA sales and EU sales" visual to show European sales for individual games.
+
+Pie Chart: Contributes to the "Sales by region" pie chart, representing 27% of the total sales.
+
+Global_Sales
+What it does: Calculates the total global sales across all regions and games.
+
+DAX Formula:
+
+Global_Sales = CALCULATE(SUM(vgsales[Sales]))
+
+Where it's used:
+
+Trend Chart: Forms the basis for the Trend chart, which displays total sales by year from 1980 to 2015.
+
+Scatter Plot: Determines the size of the bubbles in the "Scatter – correlation between NA sales and EU sales" visual, indicating the overall global sales for each game.
+
+Bar Chart : Used in the "Bar chart – top 10 best-selling games worldwide" to show the total sales for each of the top games.
+
+Bar Chart : Used in the "Bar chart - total game sales by publisher" to show total sales for each publisher.
+
+NA_Sales
+What it does: Calculates the total sales specifically for the North American (NA) region.
+
+DAX Formula:
+
+NA_Sales =
+CALCULATE(
+    SUM(vgsales[Sales]),
+    vgsales[Region] = "NA"
+)
+
+Where it's used:
+
+Scatter Plot: Used on the X-axis of the "Scatter – correlation between NA sales and EU sales" visual to show North American sales for individual games.
+
+Pie Chart: Contributes to the "Sales by region" pie chart, representing 49% of the total sales.
+
+Top_Platform
+What it does: Identifies the platform(s) with the highest total global sales. If multiple platforms share the top sales figure, it returns all of them, separated by a comma.
+
+DAX Formula:
+
+Top_Platform =
+VAR PlatformSales =
+    SUMMARIZE(
+        vgsales,
+        vgsales[Platform],
+        "TotalSales", SUM(vgsales[Sales])
+    )
+VAR MaxSales = MAXX(PlatformSales, [TotalSales])
+VAR Result =
+    CONCATENATEX(
+        FILTER(PlatformSales, [TotalSales] = MaxSales),
+        vgsales[Platform],
+        ", "
+    )
+RETURN Result
+
+Where it's used:
+
+Card Visual: This measure is directly used in the "Card – best-selling platform globally" to display the name of the top-selling platform (e.g., "PlayStation 2 (PS2)").
