@@ -6,7 +6,7 @@ This project analyzes global video game sales using Power BI. The goal is to tra
 ## Dashboard visualizations
 
 ### 1. Trend chart
-![Trend chart](images/trend_sales_by_Year.png)  
+![Trend chart](trend_sales_by_Year.png)  
 Shows total sales per year from 1980 to 2015. Sales were initially low and unstable, then rose sharply around 1995, peaking in 2008 at 678 units, followed by a decline to 264 units by 2015. This demonstrates a typical product lifecycle: growth, expansion, peak, and decline.
 
 ### 2. Scatter plot – NA vs EU sales
