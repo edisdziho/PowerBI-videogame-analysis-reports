@@ -23,10 +23,10 @@ BrojIgrica = DISTINCTCOUNT(vgsales[Name])
 
 Where it's used:
 
-Matrix Visual: This measure is fundamental for the "Matrix visual (number of games released by platform and genre)", where it displays the count of distinct games for each platform and genre combination.
+Matrix Visual (Bottom Left): This measure is fundamental for the "Matrix visual (number of games released by platform and genre)", where it displays the count of distinct games for each platform and genre combination.
 
 EU_Sales
-What it Does: Calculates the total sales specifically for the European (EU) region.
+What it does: Calculates the total sales specifically for the European (EU) region.
 
 DAX Formula:
 
@@ -38,9 +38,9 @@ CALCULATE(
 
 Where it's used:
 
-Scatter Plot: Used on the Y-axis of the "Scatter – correlation between NA sales and EU sales" visual to show European sales for individual games.
+Scatter Plot (Bottom Right): Used on the Y-axis of the "Scatter – correlation between NA sales and EU sales" visual to show European sales for individual games.
 
-Pie Chart: Contributes to the "Sales by region" pie chart, representing 27% of the total sales.
+Pie Chart (Middle): Contributes to the "Sales by region" pie chart, representing 27% of the total sales.
 
 Global_Sales
 What it does: Calculates the total global sales across all regions and games.
@@ -51,13 +51,13 @@ Global_Sales = CALCULATE(SUM(vgsales[Sales]))
 
 Where it's used:
 
-Trend Chart: Forms the basis for the Trend chart, which displays total sales by year from 1980 to 2015.
+Trend Chart (Middle Left): Forms the basis for the "Trend (on the dashboard left in the middle)" chart, which displays total sales by year from 1980 to 2015.
 
-Scatter Plot: Determines the size of the bubbles in the "Scatter – correlation between NA sales and EU sales" visual, indicating the overall global sales for each game.
+Scatter Plot (Bottom Right): Determines the size of the bubbles in the "Scatter – correlation between NA sales and EU sales" visual, indicating the overall global sales for each game.
 
-Bar Chart : Used in the "Bar chart – top 10 best-selling games worldwide" to show the total sales for each of the top games.
+Bar Chart (Top Left): Used in the "Bar chart – top 10 best-selling games worldwide" to show the total sales for each of the top games.
 
-Bar Chart : Used in the "Bar chart - total game sales by publisher" to show total sales for each publisher.
+Bar Chart (Top Middle): Used in the "Bar chart - total game sales by publisher" to show total sales for each publisher.
 
 NA_Sales
 What it does: Calculates the total sales specifically for the North American (NA) region.
@@ -72,9 +72,9 @@ CALCULATE(
 
 Where it's used:
 
-Scatter Plot: Used on the X-axis of the "Scatter – correlation between NA sales and EU sales" visual to show North American sales for individual games.
+Scatter Plot (Bottom Right): Used on the X-axis of the "Scatter – correlation between NA sales and EU sales" visual to show North American sales for individual games.
 
-Pie Chart: Contributes to the "Sales by region" pie chart, representing 49% of the total sales.
+Pie Chart (Middle): Contributes to the "Sales by region" pie chart, representing 49% of the total sales.
 
 Top_Platform
 What it does: Identifies the platform(s) with the highest total global sales. If multiple platforms share the top sales figure, it returns all of them, separated by a comma.
@@ -99,4 +99,4 @@ RETURN Result
 
 Where it's used:
 
-Card Visual: This measure is directly used in the "Card – best-selling platform globally" to display the name of the top-selling platform (e.g., "PlayStation 2 (PS2)").
+Card Visual (Middle Right): This measure is directly used in the "Card – best-selling platform globally" to display the name of the top-selling platform (e.g., "PlayStation 2 (PS2)").
