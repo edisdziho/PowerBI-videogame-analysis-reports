@@ -1,44 +1,37 @@
 Power BI DAX Measures for Video Game Sales Analysis
 This README outlines the key DAX (Data Analysis Expressions) measures used in the Power BI dashboard for analyzing video game sales. Each measure's purpose and its application within the various dashboard visuals are described below.
 
-Measures Overview
+
+## Measures Overview
+
 average_global_sales
 What it does: Calculates the average global sales per unique game title. It first sums the sales for each distinct game name and then calculates the average of these sums across all games.
 
 DAX Formula:
-
 average_global_sales = AVERAGEX(
     VALUES(vgsales[Name]),
     CALCULATE(SUM(vgsales[Sales]))
 )
-
 Where it's used: This measure can serve as a general Key Performance Indicator (KPI) to understand the typical sales performance of a game. While not explicitly tied to a specific chart description provided, it's valuable for overall sales insights or could be used in a card visual showing the overall average.
 
 BrojIgrica
 What it does: Counts the distinct number of video game titles present in the dataset.
 
 DAX Formula:
-
 BrojIgrica = DISTINCTCOUNT(vgsales[Name])
-
 Where it's used:
-
-Matrix Visual (Bottom Left): This measure is fundamental for the "Matrix visual (number of games released by platform and genre)", where it displays the count of distinct games for each platform and genre combination.
+Matrix Visual: This measure is fundamental for the "Matrix visual (number of games released by platform and genre)", where it displays the count of distinct games for each platform and genre combination.
 
 EU_Sales
 What it does: Calculates the total sales specifically for the European (EU) region.
-
 DAX Formula:
-
 EU_Sales =
 CALCULATE(
     SUM(vgsales[Sales]),
     vgsales[Region] = "EU"
 )
-
 Where it's used:
-
-Scatter Plot (Bottom Right): Used on the Y-axis of the "Scatter – correlation between NA sales and EU sales" visual to show European sales for individual games.
+Scatter Plot: Used on the Y-axis of the "Scatter – correlation between NA sales and EU sales" visual to show European sales for individual games.
 
 Pie Chart (Middle): Contributes to the "Sales by region" pie chart, representing 27% of the total sales.
 
