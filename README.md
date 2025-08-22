@@ -5,11 +5,12 @@ Global video game sales analyzed in Power BI. Dataset cleaned, transformed, and 
 This project analyzes global video game sales using **Power BI**. The goal is to transform raw sales data into interactive visualizations to support data-driven business decisions.
 
 ## Dataset
-The analysis uses a real-world `.csv` dataset containing yearly sales data across multiple regions. Key preprocessing steps include:
-- Assigning correct data types
-- Unpivoting regional sales columns
-- Handling missing values
-- Removing redundant columns
+The analysis uses a real-world .csv dataset containing yearly sales data across multiple regions. The dataset was downloaded from Kaggle, a popular platform for sharing data science resources.
+Key preprocessing steps included:
+Assigning correct data types → Ensured each column (numeric, text, year, etc.) had the appropriate type for accurate processing and visualization.
+Unpivoting regional sales columns → Converted regional columns into rows, creating two key fields: Region and Sales, making the dataset more flexible for filtering and analysis.
+Handling missing values → Filled gaps in the Year column to maintain a complete and consistent time series.
+Removing redundant columns → Dropped the Global Sales column since it represents the sum of all regions, which can be easily reconstructed within Power BI through measures and aggregations.
 
 ## Key dashboard visualizations
 - **Trend chart:** Annual sales from 1980 to 2015  
